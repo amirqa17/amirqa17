@@ -18,7 +18,9 @@ export default defineConfig({
     noExternal: ['@iconify/vue']
   },
   build: {
-    target: 'esnext',
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
     minify: 'terser',
     terserOptions: {
       compress: {
