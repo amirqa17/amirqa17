@@ -159,21 +159,15 @@ const technologies = shallowRef({
                   </div>
                   <div class="command-history">
                     <div class="command-line">
-                      <span class="command">neofetch</span>
+                      <span class="command">Profile</span>
                       <div class="output">
-                        // Profile
-                        
-                        🌐  Languages  : Japanese (N2), English (Fluent), Russian (Native)
-                        📍  Location   : Tokyo, Japan
-                        💼  Role       : Frontend Engineer @ Rakuten Group
+                        🌐  Languages  : Japanese (N3), English (Fluent), Russian (Native) <br/>
+                        📍  Location   : Tokyo, Japan <br/>
                       </div>
                     </div>
                     <div class="command-line">
-                      <span class="command">git status</span>
                       <div class="output">
-                        On branch main
                         Ready to collaborate ✨
-                        All systems operational
                       </div>
                     </div>
                   </div>
@@ -192,6 +186,371 @@ const technologies = shallowRef({
   position: relative;
   width: 550px;
   height: 340px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transform: rotateX(2deg) rotateY(-1deg) translateY(20px);
+  animation: float 8s ease-in-out infinite;
+}
+
+.laptop-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 2px solid #444;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(88, 156, 255, 0.3),
+    0 0 60px rgba(242, 87, 255, 0.2);
+  overflow: hidden;
+  padding: 4px;
+  animation: screenGlow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.laptop-screen::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.laptop-keyboard {
+  position: absolute;
+  width: 130%;
+  height: 120px;
+  left: -15%;
+  bottom: -100px;
+  background: linear-gradient(to bottom, #808080, #999);
+  border-radius: 0 0 12px 12px;
+  transform: rotateX(60deg);
+  transform-origin: top;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: repeat(60, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1px;
+  padding: 8px;
+}
+
+.laptop-keyboard::after {
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 4px;
+  bottom: 10px;
+  left: 35%;
+  background: #666;
+  border-radius: 2px;
+}
+
+.laptop-key {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.laptop-base {
+  position: absolute;
+  width: 130%;
+  height: 8px;
+  left: -15%;
+  bottom: -8px;
+  background: linear-gradient(to bottom, #999, #808080);
+  border-radius: 0 0 12px 12px;
+  transform: rotateX(-90deg);
+  transform-origin: top;
+}
+
+.laptop-base::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.2);
+  top: 0;
+}
+
+.laptop-trackpad {
+  position: absolute;
+  width: 40%;
+  height: 30px;
+  left: 30%;
+  bottom: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.laptop-code {
+  padding: 20px;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e0e0e0;
+  opacity: 0.9;
+}
+
+.code-block {
+  animation: slideUp 20s linear infinite;
+}
+
+.code-line {
+  white-space: nowrap;
+  margin: 8px 0;
+}
+
+.indent {
+  padding-left: 20px;
+}
+
+.code-comment {
+  color: #888;
+  font-style: italic;
+}
+
+.code-keyword {
+  color: #f92672;
+}
+
+.code-variable {
+  color: #a6e22e;
+}
+
+.code-operator {
+  color: #d4d4d4;
+}
+
+.code-string {
+  color: #e6db74;
+}
+
+.code-bracket {
+  color: #d4d4d4;
+}
+
+.laptop-glow {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(
+    circle at center,
+    rgba(100, 255, 218, 0.15) 0%,
+    transparent 70%
+  );
+  filter: blur(30px);
+  animation: glow 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: rotateX(2deg) rotateY(-1deg) translateY(20px);
+  }
+  50% {
+    transform: rotateX(3deg) rotateY(1deg) translateY(10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.laptop-keyboard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at center, rgba(0,0,0,0.2) 0.5px, transparent 1px);
+  background-size: 10px 10px;
+  background-position: -5px -5px;
+}
+
+:deep(.dark) .laptop-screen {
+  background: #000;
+  border-color: #333;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(100, 255, 218, 0.3),
+    0 0 80px rgba(100, 255, 218, 0.2);
+  animation: rgbGlowDark 8s linear infinite;
+}
+
+@keyframes screenGlow {
+  0% {
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(88, 156, 255, 0.2),
+      0 0 40px rgba(242, 87, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 0 80px rgba(88, 156, 255, 0.5),
+      0 0 120px rgba(242, 87, 255, 0.4);
+  }
+  100% {
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(88, 156, 255, 0.2),
+      0 0 40px rgba(242, 87, 255, 0.1);
+  }
+}
+
+@keyframes rgbGlowDark {
+  0% {
+    box-shadow: 
+      0 0 40px rgba(255, 0, 0, 0.6),
+      0 0 80px rgba(255, 0, 0, 0.3);
+  }
+  33% {
+    box-shadow: 
+      0 0 40px rgba(0, 255, 0, 0.6),
+      0 0 80px rgba(0, 255, 0, 0.3);
+  }
+  66% {
+    box-shadow: 
+      0 0 40px rgba(0, 0, 255, 0.6),
+      0 0 80px rgba(0, 0, 255, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 0 40px rgba(255, 0, 0, 0.6),
+      0 0 80px rgba(255, 0, 0, 0.3);
+  }
+}
+
+.laptop::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.05) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laptop,
+  .code-block,
+  .laptop-glow {
+    animation: none;
+  }
+}
+
+.macos-window {
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.window-header {
+  background: #323233;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  position: relative;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.close {
+  background: #ff5f56;
+}
+
+.minimize {
+  background: #ffbd2e;
+}
+
+.maximize {
+  background: #27c93f;
+}
+
+.window-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #999;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.terminal-content {
+  flex: 1;
+  padding: 24px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #eee;
+}
+
+.prompt {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.command {
+  color: #eee;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.command-history .output {
+  color: #a0a0a0;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-left: 4px;
+}
+
+.laptop {
+  position: relative;
+  width: 500px;
+  height: 320px;
   margin: 0 auto;
   transform-style: preserve-3d;
   transform: rotateX(2deg) rotateY(-1deg) translateY(20px);
@@ -736,4 +1095,4 @@ const technologies = shallowRef({
 .animation-delay-4000 {
   animation-delay: 4s;
 }
-</style> 
+</style>
