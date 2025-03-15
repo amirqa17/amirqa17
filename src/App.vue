@@ -56,7 +56,7 @@ const toggleDarkMode = () => {
           <footer class="bg-stone-100 dark:bg-zinc-800/50 py-8">
             <div class="container mx-auto px-6 text-center text-zinc-600 dark:text-zinc-400">
               <span class="font-mono">
-                &lt;/&gt; with 💙 using Vue.js {{ new Date().getFullYear() }}
+                &lt;/&gt; with 💙, Amir Ibraimov {{ new Date().getFullYear() }}
               </span>
             </div>
           </footer>
