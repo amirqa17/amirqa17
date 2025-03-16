@@ -24,7 +24,7 @@
           </h3>
           <p class="text-zinc-600 dark:text-zinc-300 mb-4">
             Full-featured e-commerce platform with Firebase integration, FreedomPay API, 
-            and email notifications. Includes review system and serverless architecture.
+            and email notifications. Features a review system and a serverless architecture for seamless scalability.
           </p>
           <div class="flex flex-wrap gap-2">
             <span class="px-2 py-1 text-sm bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300 rounded">Next.js</span>
@@ -57,7 +57,7 @@
           </h3>
           <p class="text-zinc-600 dark:text-zinc-300 mb-4">
             Dynamic blog with full internationalization, integrating Contentful CMS. 
-            Features multilingual content management and localized user experience.
+            Supports multilingual content management for a seamless localized experience.
           </p>
           <div class="flex flex-wrap gap-2">
             <span class="px-2 py-1 text-sm bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300 rounded">Next.js</span>
@@ -112,9 +112,8 @@
             Nvidia Stock Tracker
           </h3>
           <p class="text-zinc-600 dark:text-zinc-300 mb-4">
-            Stock tracking application for Nvidia (NVDA) that provides price monitoring and basic technical 
-            analysis. Features include real-time price updates, historical data charts, and simple buy/sell 
-            indicators. Built with Vue.js and financial market APIs.
+            A fun side project tracking Nvidia (NVDA) stock prices with real-time updates, historical data charts, 
+            and simple buy/sell indicators. Built with Vue.js and financial market APIs for quick insights.
           </p>
           <div class="flex flex-wrap gap-2">
             <span class="px-2 py-1 text-sm bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded">Vue.js</span>
@@ -122,16 +121,6 @@
             <span class="px-2 py-1 text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded">Chart.js</span>
             <span class="px-2 py-1 text-sm bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 rounded">Financial APIs</span>
           </div>
-          <a 
-            href="https://github.com/amirqa17/nvidia-stock-tracker"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center mt-4 text-sm text-zinc-600 
-            group-hover:text-blue-600 dark:text-zinc-400 dark:group-hover:text-purple-400
-            transition-colors duration-300"
-          >
-            View on GitHub →
-          </a>
         </div>
 
         <!-- Online Pharmacy Platform -->
