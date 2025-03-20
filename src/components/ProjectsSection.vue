@@ -31,16 +31,6 @@
             <span class="px-2 py-1 text-sm bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300 rounded">Tailwind</span>
             <span class="px-2 py-1 text-sm bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 rounded">Firebase</span>
           </div>
-          <a 
-            href="https://github.com/amirqa17/nextjs-e-commerce"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center mt-4 text-sm text-zinc-600 
-            group-hover:text-blue-600 dark:text-zinc-400 dark:group-hover:text-purple-400
-            transition-colors duration-300"
-          >
-            View on GitHub →
-          </a>
         </div>
 
         <!-- Contentful Blog Project -->
@@ -64,16 +54,6 @@
             <span class="px-2 py-1 text-sm bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300 rounded">Tailwind</span>
             <span class="px-2 py-1 text-sm bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded">Contentful</span>
           </div>
-          <a 
-            href="https://github.com/amirqa17/i18-n-internatonalized-contentful-"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center mt-4 text-sm text-zinc-600 
-            group-hover:text-blue-600 dark:text-zinc-400 dark:group-hover:text-purple-400
-            transition-colors duration-300"
-          >
-            View on GitHub →
-          </a>
         </div>
 
         <!-- AKKY LTD Project -->
@@ -145,16 +125,6 @@
             <span class="px-2 py-1 text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded">Contentful</span>
             <span class="px-2 py-1 text-sm bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300 rounded">Tailwind</span>
           </div>
-          <a 
-            href="https://github.com/altaysorbent/website"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center mt-4 text-sm text-zinc-600 
-            group-hover:text-blue-600 dark:text-zinc-400 dark:group-hover:text-purple-400
-            transition-colors duration-300"
-          >
-            View on GitHub →
-          </a>
         </div>
 
         <!-- Portfolio Website -->
@@ -177,16 +147,6 @@
             <span class="px-2 py-1 text-sm bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300 rounded">Next.js</span>
             <span class="px-2 py-1 text-sm bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300 rounded">Tailwind</span>
           </div>
-          <a 
-            href="https://github.com/amirqa17/portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center mt-4 text-sm text-zinc-600 
-            group-hover:text-blue-600 dark:text-zinc-400 dark:group-hover:text-purple-400
-            transition-colors duration-300"
-          >
-            View on GitHub →
-          </a>
         </div>
       </div>
     </div>

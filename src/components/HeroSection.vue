@@ -2,60 +2,53 @@
 import { shallowRef } from 'vue'
 import { Icon } from '@iconify/vue'
 
-const technologies = shallowRef({
-  frameworks: [
-    {
-      name: 'Vue.js',
-      icon: 'logos:vue',
-      color: 'bg-emerald-100/90 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-300'
-    },
-    {
-      name: 'React',
-      icon: 'logos:react',
-      color: 'bg-sky-100/90 text-sky-900 dark:bg-sky-900/30 dark:text-sky-300'
-    },
-    {
-      name: 'Svelte',
-      icon: 'logos:svelte-icon',
-      color: 'bg-orange-100/90 text-orange-900 dark:bg-orange-900/30 dark:text-orange-300'
+const scrollToSection = (sectionId: string) => {
+  setTimeout(() => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const headerOffset = 128 // Adjust this value based on your header height
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
     }
-  ],
-  languages: [
-    {
-      name: 'TypeScript',
-      icon: 'logos:typescript-icon',
-      color: 'bg-blue-100/90 text-blue-900 dark:bg-blue-900/30 dark:text-blue-300'
-    },
-    {
-      name: 'JavaScript',
-      icon: 'logos:javascript',
-      color: 'bg-yellow-100/90 text-yellow-900 dark:bg-yellow-900/30 dark:text-yellow-300'
-    }
-  ],
-  styling: [
-    {
-      name: 'Tailwind',
-      icon: 'logos:tailwindcss-icon',
-      color: 'bg-cyan-100/90 text-cyan-900 dark:bg-cyan-900/30 dark:text-cyan-300'
-    }
-  ],
-  tools: [
-    {
-      name: 'Vitest',
-      icon: 'logos:vitest',
-      color: 'bg-emerald-100/90 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-300'
-    },
-    {
-      name: 'Vite',
-      icon: 'logos:vitejs',
-      color: 'bg-purple-100/90 text-purple-900 dark:bg-purple-900/30 dark:text-purple-300'
-    }
-  ]
-})
+  }, 100)
+}
+
+const frontendTechStack = [
+  {
+    name: 'Vue.js',
+    icon: 'logos:vue',
+    color: 'bg-emerald-100/90 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-300'
+  },
+  {
+    name: 'React',
+    icon: 'logos:react',
+    color: 'bg-sky-100/90 text-sky-900 dark:bg-sky-900/30 dark:text-sky-300'
+  },
+  {
+    name: 'Next.js',
+    icon: 'simple-icons:nextdotjs',
+    color: 'bg-indigo-100/90 text-indigo-900 dark:bg-indigo-800/50 dark:text-indigo-200'
+  },
+  {
+    name: 'Svelte',
+    icon: 'logos:svelte-icon',
+    color: 'bg-orange-100/90 text-orange-900 dark:bg-orange-900/30 dark:text-orange-300'
+  },
+  {
+    name: 'Tailwind',
+    icon: 'logos:tailwindcss-icon',
+    color: 'bg-cyan-100/90 text-cyan-900 dark:bg-cyan-900/30 dark:text-cyan-300'
+  }
+]
 </script>
 
 <template>
-  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+  <section class="pt-32 pb-16 px-6 relative overflow-hidden">
     <!-- Background Elements -->
     <div class="absolute inset-0 -z-10">
       <!-- Base background with pattern -->
@@ -87,12 +80,13 @@ const technologies = shallowRef({
               and delivering great user experiences.
             </p>
 
-            <div class="flex gap-4 pt-4">
+            <div class="flex gap-4">
               <router-link
                 to="/about#contact"
                 class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-purple-600 dark:hover:bg-purple-700 
                 transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20 
                 dark:hover:shadow-purple-500/20 font-medium"
+                @click="scrollToSection('contact')"
               >
                 Get in touch
               </router-link>
@@ -107,29 +101,36 @@ const technologies = shallowRef({
               </router-link>
             </div>
 
-            <div class="flex flex-wrap gap-6">
-              <div v-for="(techs, category) in technologies" :key="category" class="space-y-2">
-                <h3 class="text-sm font-medium text-zinc-500 dark:text-zinc-400 capitalize">{{ category }}</h3>
-                <div class="flex flex-wrap gap-3">
-                  <span 
-                    v-for="tech in techs"
-                    :key="tech.name"
-                    :class="[
-                      'px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 transition-all hover:scale-105 hover:-translate-y-1 tech-badge',
-                      tech.color
-                    ]"
-                    :style="{
-                      animationDelay: `${tech.name.length * 0.1}s`
-                    }"
-                  >
-                    <Icon 
-                      :icon="tech.icon"
-                      class="w-4 h-4 tech-icon"
-                    />
-                    {{ tech.name }}
-                  </span>
-                </div>
-              </div>
+            <div class="flex flex-wrap gap-3">
+              <span 
+                v-for="tech in frontendTechStack"
+                :key="tech.name"
+                :class="[
+                  'px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 transition-all hover:scale-105 hover:-translate-y-1 tech-badge',
+                  tech.color
+                ]"
+                :style="{
+                  animationDelay: `${tech.name.length * 0.1}s`
+                }"
+              >
+                <Icon 
+                  :icon="tech.icon"
+                  class="w-4 h-4 tech-icon"
+                />
+                {{ tech.name }}
+              </span>
+            </div>
+            <div>
+              <router-link 
+                to="/about#skills" 
+                class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-lg 
+                hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200 hover:scale-105 
+                hover:shadow-lg hover:shadow-zinc-500/10 dark:hover:shadow-zinc-900/20 font-medium"
+                @click="scrollToSection('skills')"
+              >
+                View full technical skills
+                <Icon icon="mdi:arrow-right" class="w-4 h-4" />
+              </router-link>
             </div>
           </div>
         </div>

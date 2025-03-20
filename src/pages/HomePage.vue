@@ -1,11 +1,11 @@
 <template>
-  <main>
+  <div class="space-y-4">
     <HeroSection />
     <ProjectsSection />
-  </main>
+  </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import HeroSection from '../components/HeroSection.vue'
 import ProjectsSection from '../components/ProjectsSection.vue'
 </script> 
