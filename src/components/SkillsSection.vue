@@ -1,7 +1,10 @@
 <template>
   <div class="space-y-8">
     <div class="text-center space-y-4">
-      <h2 class="text-3xl font-bold text-zinc-900 dark:text-white">Technical Skills</h2>
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <Icon icon="ph:code-block-bold" class="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+        <h2 class="text-3xl font-bold text-zinc-900 dark:text-white">Technical Skills</h2>
+      </div>
       <p class="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
         A comprehensive overview of my technical expertise and the technologies I work with.
       </p>
@@ -352,6 +355,16 @@ const skillSets = shallowRef({
     }
   ],
   testing: [
+    {
+      name: 'Playwright',
+      icon: 'logos:playwright',
+      color: 'bg-red-100/90 text-red-900 dark:bg-red-900/30 dark:text-red-300'
+    },
+    {
+      name: 'Cypress',
+      icon: 'simple-icons:cypress',
+      color: 'bg-emerald-100/90 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-300'
+    },
     {
       name: 'Vitest',
       icon: 'logos:vitest',
