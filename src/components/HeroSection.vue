@@ -1,1099 +1,171 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue'
-import { Icon } from '@iconify/vue'
+import TokyoTower3D from './TokyoTower3D.vue'
+import SkillsSection from './SkillsSection.vue'
+import { ref } from 'vue'
 
-const scrollToSection = (sectionId: string) => {
-  setTimeout(() => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const headerOffset = 128 // Adjust this value based on your header height
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
-  }, 100)
-}
-
-const frontendTechStack = [
-  {
-    name: 'Vue.js',
-    icon: 'logos:vue',
-    color: 'bg-emerald-100/90 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-300'
-  },
-  {
-    name: 'React',
-    icon: 'logos:react',
-    color: 'bg-sky-100/90 text-sky-900 dark:bg-sky-900/30 dark:text-sky-300'
-  },
-  {
-    name: 'Next.js',
-    icon: 'simple-icons:nextdotjs',
-    color: 'bg-indigo-100/90 text-indigo-900 dark:bg-indigo-800/50 dark:text-indigo-200'
-  },
-  {
-    name: 'Svelte',
-    icon: 'logos:svelte-icon',
-    color: 'bg-orange-100/90 text-orange-900 dark:bg-orange-900/30 dark:text-orange-300'
-  },
-  {
-    name: 'Tailwind',
-    icon: 'logos:tailwindcss-icon',
-    color: 'bg-cyan-100/90 text-cyan-900 dark:bg-cyan-900/30 dark:text-cyan-300'
-  }
-]
+const showSkills = ref(false)
 </script>
 
 <template>
-  <section class="pt-32 pb-16 px-6 relative overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 -z-10">
-      <!-- Base background with pattern -->
-      <div class="absolute inset-0 bg-gradient-to-br from-stone-50 via-zinc-100/90 to-neutral-100 dark:from-zinc-900 dark:via-zinc-900/90 dark:to-zinc-800 
-        [background-image:radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] 
-        dark:[background-image:radial-gradient(#1e293b_1px,transparent_1px)]"></div>
-      
-      <!-- Floating shapes -->
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-50/30 dark:bg-emerald-900/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-3xl animate-blob opacity-60"></div>
-      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-sky-50/30 dark:bg-blue-900/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-3xl animate-blob animation-delay-2000 opacity-60"></div>
-      <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-rose-50/30 dark:bg-purple-900/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-3xl animate-blob animation-delay-4000 opacity-60"></div>
-    </div>
+  <section class="relative min-h-screen flex flex-col justify-center items-center bg-[#111015] overflow-hidden px-4 sm:px-6 lg:px-8">
+    <!-- Background gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#111015] via-[#111015] to-[#1a1a1f] opacity-100"></div>
 
-    <div class="container mx-auto relative">
-      <div class="flex items-center justify-between">
-        <!-- Left side content -->
-        <div class="max-w-2xl">
-          <h2 class="text-4xl font-bold text-zinc-900 dark:text-white mb-6">
-            Hi 👋, I'm Amir 
-            <span class="block mt-2 text-4xl text-zinc-600 dark:text-zinc-300">
-              A Frontend Engineer based in Tokyo
-            </span>
-          </h2>
-
-          <div class="space-y-6">
-            <p class="text-lg text-zinc-600 dark:text-zinc-300">
-              With 4+ years of experience in frontend engineering, I enjoy creating responsive and 
-              user-friendly web applications. I'm passionate about clean code, performance optimization, 
-              and delivering great user experiences.
-            </p>
-
-            <div class="flex gap-4">
-              <router-link
-                to="/about#contact"
-                class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-purple-600 dark:hover:bg-purple-700 
-                transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20 
-                dark:hover:shadow-purple-500/20 font-medium"
-                @click="scrollToSection('contact')"
-              >
-                Get in touch
-              </router-link>
-              <router-link
-                to="/#projects"
-                class="px-6 py-3 bg-white text-blue-600 dark:bg-zinc-900 dark:text-purple-400 rounded-lg 
-                hover:bg-blue-50 dark:hover:bg-zinc-800 transition-all duration-200 hover:scale-105 
-                hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-purple-500/10 
-                border border-blue-200 dark:border-purple-800 font-medium"
-              >
-                View projects
-              </router-link>
-            </div>
-
-            <div class="flex flex-wrap gap-3">
-              <span 
-                v-for="tech in frontendTechStack"
-                :key="tech.name"
-                :class="[
-                  'px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 transition-all hover:scale-105 hover:-translate-y-1 tech-badge',
-                  tech.color
-                ]"
-                :style="{
-                  animationDelay: `${tech.name.length * 0.1}s`
-                }"
-              >
-                <Icon 
-                  :icon="tech.icon"
-                  class="w-4 h-4 tech-icon"
-                />
-                {{ tech.name }}
-              </span>
-            </div>
-            <div>
-              <router-link 
-                to="/about#skills" 
-                class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-lg 
-                hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200 hover:scale-105 
-                hover:shadow-lg hover:shadow-zinc-500/10 dark:hover:shadow-zinc-900/20 font-medium"
-                @click="scrollToSection('skills')"
-              >
-                View full technical skills
-                <Icon icon="mdi:arrow-right" class="w-4 h-4" />
-              </router-link>
-            </div>
+    <!-- Main content container -->
+    <div class="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center justify-center min-h-screen pt-20">
+      <!-- Headline -->
+      <div class="text-center space-y-8">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+          <span class="text-white">Hi <span class="inline-block animate-wave origin-[70%_70%]">👋</span>, I'm </span>
+          <span class="bg-gradient-to-r from-pink-400 via-pink-300 to-amber-300 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">Ibraimov Amir</span>
+          <span class="text-white">,</span>
+          <br class="hidden md:block" />
+          <span class="text-white">A </span>
+          <span class="bg-gradient-to-r from-pink-400 via-pink-300 to-amber-300 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">Frontend Engineer</span>
+          <span class="text-white"> based in Tokyo</span>
+        </h1>
+        
+        <!-- 3D Model Container -->
+        <div class="flex items-center justify-center">
+          <div class="w-64 h-64 md:w-96 md:h-96 lg:w-[32rem] lg:h-[32rem]">
+            <TokyoTower3D />
           </div>
         </div>
 
-        <!-- Right side animated laptop -->
-        <div class="hidden lg:block relative w-[600px] h-[450px]">
-          <div class="laptop">
-            <div class="laptop-screen">
-              <div class="macos-window">
-                <!-- Window Controls -->
-                <div class="window-header">
-                  <div class="window-controls">
-                    <span class="control close"></span>
-                    <span class="control minimize"></span>
-                    <span class="control maximize"></span>
-                  </div>
-                  <div class="window-title">terminal</div>
-                </div>
-                
-                <!-- Terminal Content -->
-                <div class="terminal-content">
-                  <div class="prompt">
-                    <span class="user">ibraimov.amir1996@gmail.com</span>
-                    <span class="separator">:</span>
-                    <span class="directory">~/portfolio</span>
-                    <span class="symbol">$</span>
-                  </div>
-                  <div class="command-history">
-                    <div class="command-line">
-                      <span class="command">Profile</span>
-                      <div class="output">
-                        🌐  Languages  : Japanese (N3), English (Fluent), Russian (Native) <br/>
-                        📍  Location   : Tokyo, Japan <br/>
-                      </div>
-                    </div>
-                    <div class="command-line">
-                      <div class="output">
-                        Ready to collaborate ✨
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto px-4 leading-relaxed">
+          With 5+ years of experience in frontend engineering, I enjoy creating responsive and user-friendly web applications. I'm passionate about clean code, performance optimization, and delivering great user experiences.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="px-8 py-4 bg-gradient-to-r from-pink-500 to-orange-400 text-white rounded-lg text-lg font-semibold shadow-lg hover:from-pink-600 hover:to-orange-500 transition-all duration-300 transform hover:scale-105">
+            Get in touch
+          </button>
+          <button 
+            @click="showSkills = true"
+            class="px-8 py-4 bg-[#232127] text-pink-200 border border-pink-400/30 rounded-lg text-lg font-semibold shadow hover:bg-[#2d2b32] transition-all duration-300 transform hover:scale-105"
+          >
+            View technical skills
+          </button>
+        </div>
+
+        <!-- Tech stack badges -->
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="px-4 py-1.5 rounded-full bg-[#18171c] text-pink-200 border border-pink-400/20 text-sm font-medium hover:border-pink-400/40 transition-colors">Vue.js</span>
+          <span class="px-4 py-1.5 rounded-full bg-[#18171c] text-blue-200 border border-blue-400/20 text-sm font-medium hover:border-blue-400/40 transition-colors">React</span>
+          <span class="px-4 py-1.5 rounded-full bg-[#18171c] text-blue-300 border border-blue-400/20 text-sm font-medium hover:border-blue-400/40 transition-colors">Next.js</span>
+          <span class="px-4 py-1.5 rounded-full bg-[#18171c] text-orange-200 border border-orange-400/20 text-sm font-medium hover:border-orange-400/40 transition-colors">Svelte</span>
+          <span class="px-4 py-1.5 rounded-full bg-[#18171c] text-cyan-200 border border-cyan-400/20 text-sm font-medium hover:border-cyan-400/40 transition-colors">Tailwind</span>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center justify-center gap-4 pt-2">
+          <a 
+            href="https://github.com/amirqa17" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-zinc-400 hover:text-white transition-colors p-2 hover:scale-110 transform duration-300"
+          >
+            <span class="sr-only">GitHub</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/amiribraimov/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-zinc-400 hover:text-white transition-colors p-2 hover:scale-110 transform duration-300"
+          >
+            <span class="sr-only">LinkedIn</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+          </a>
+          <a 
+            href="mailto:ibraimov.amir1996@gmail.com"
+            class="text-zinc-400 hover:text-white transition-colors p-2 hover:scale-110 transform duration-300"
+          >
+            <span class="sr-only">Email</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </a>
+          <a 
+            href="https://discord.com/users/amiracle2157"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-zinc-400 hover:text-white transition-colors p-2 hover:scale-110 transform duration-300"
+          >
+            <span class="sr-only">Discord</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
+
+    <!-- Skills Section -->
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 scale-95"
+      enter-to-class="opacity-100 scale-100"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100 scale-100"
+      leave-to-class="opacity-0 scale-95"
+    >
+      <SkillsSection v-if="showSkills" @close="showSkills = false" />
+    </Transition>
   </section>
 </template>
 
-<style scoped>
-.laptop {
-  position: relative;
-  width: 550px;
-  height: 340px;
-  margin: 0 auto;
-  transform-style: preserve-3d;
-  transform: rotateX(2deg) rotateY(-1deg) translateY(20px);
-  animation: float 8s ease-in-out infinite;
-}
-
-.laptop-screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #1a1a1a;
-  border-radius: 12px;
-  border: 2px solid #444;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(88, 156, 255, 0.3),
-    0 0 60px rgba(242, 87, 255, 0.2);
-  overflow: hidden;
-  padding: 4px;
-  animation: screenGlow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.laptop-screen::before {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #333;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.laptop-keyboard {
-  position: absolute;
-  width: 130%;
-  height: 120px;
-  left: -15%;
-  bottom: -100px;
-  background: linear-gradient(to bottom, #808080, #999);
-  border-radius: 0 0 12px 12px;
-  transform: rotateX(60deg);
-  transform-origin: top;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  display: grid;
-  grid-template-columns: repeat(60, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 1px;
-  padding: 8px;
-}
-
-.laptop-keyboard::after {
-  content: '';
-  position: absolute;
-  width: 30%;
-  height: 4px;
-  bottom: 10px;
-  left: 35%;
-  background: #666;
-  border-radius: 2px;
-}
-
-.laptop-key {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-}
-
-.laptop-base {
-  position: absolute;
-  width: 130%;
-  height: 8px;
-  left: -15%;
-  bottom: -8px;
-  background: linear-gradient(to bottom, #999, #808080);
-  border-radius: 0 0 12px 12px;
-  transform: rotateX(-90deg);
-  transform-origin: top;
-}
-
-.laptop-base::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.2);
-  top: 0;
-}
-
-.laptop-trackpad {
-  position: absolute;
-  width: 40%;
-  height: 30px;
-  left: 30%;
-  bottom: 20px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.laptop-code {
-  padding: 20px;
-  font-family: 'Fira Code', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #e0e0e0;
-  opacity: 0.9;
-}
-
-.code-block {
-  animation: slideUp 20s linear infinite;
-}
-
-.code-line {
-  white-space: nowrap;
-  margin: 8px 0;
-}
-
-.indent {
-  padding-left: 20px;
-}
-
-.code-comment {
-  color: #888;
-  font-style: italic;
-}
-
-.code-keyword {
-  color: #f92672;
-}
-
-.code-variable {
-  color: #a6e22e;
-}
-
-.code-operator {
-  color: #d4d4d4;
-}
-
-.code-string {
-  color: #e6db74;
-}
-
-.code-bracket {
-  color: #d4d4d4;
-}
-
-.laptop-glow {
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
-  background: radial-gradient(
-    circle at center,
-    rgba(100, 255, 218, 0.15) 0%,
-    transparent 70%
-  );
-  filter: blur(30px);
-  animation: glow 6s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: rotateX(2deg) rotateY(-1deg) translateY(20px);
-  }
-  50% {
-    transform: rotateX(3deg) rotateY(1deg) translateY(10px);
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-}
-
-.laptop-keyboard::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(circle at center, rgba(0,0,0,0.2) 0.5px, transparent 1px);
-  background-size: 10px 10px;
-  background-position: -5px -5px;
-}
-
-:deep(.dark) .laptop-screen {
-  background: #000;
-  border-color: #333;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(100, 255, 218, 0.3),
-    0 0 80px rgba(100, 255, 218, 0.2);
-  animation: rgbGlowDark 8s linear infinite;
-}
-
-@keyframes screenGlow {
+<style>
+@keyframes gradient {
   0% {
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(88, 156, 255, 0.2),
-      0 0 40px rgba(242, 87, 255, 0.1);
+    background-position: 0% 50%;
   }
   50% {
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.3),
-      0 0 80px rgba(88, 156, 255, 0.5),
-      0 0 120px rgba(242, 87, 255, 0.4);
+    background-position: 100% 50%;
   }
   100% {
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(88, 156, 255, 0.2),
-      0 0 40px rgba(242, 87, 255, 0.1);
+    background-position: 0% 50%;
   }
 }
 
-@keyframes rgbGlowDark {
+@keyframes wave {
   0% {
-    box-shadow: 
-      0 0 40px rgba(255, 0, 0, 0.6),
-      0 0 80px rgba(255, 0, 0, 0.3);
+    transform: rotate(0deg);
   }
-  33% {
-    box-shadow: 
-      0 0 40px rgba(0, 255, 0, 0.6),
-      0 0 80px rgba(0, 255, 0, 0.3);
+  10% {
+    transform: rotate(14deg);
   }
-  66% {
-    box-shadow: 
-      0 0 40px rgba(0, 0, 255, 0.6),
-      0 0 80px rgba(0, 0, 255, 0.3);
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
   }
   100% {
-    box-shadow: 
-      0 0 40px rgba(255, 0, 0, 0.6),
-      0 0 80px rgba(255, 0, 0, 0.3);
+    transform: rotate(0deg);
   }
 }
 
-.laptop::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(
-    45deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.05) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  pointer-events: none;
+.animate-gradient {
+  animation: gradient 6s ease-in-out infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .laptop,
-  .code-block,
-  .laptop-glow {
-    animation: none;
-  }
-}
-
-.macos-window {
-  background: #1e1e1e;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.window-header {
-  background: #323233;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  position: relative;
-}
-
-.window-controls {
-  display: flex;
-  gap: 8px;
-}
-
-.control {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.close {
-  background: #ff5f56;
-}
-
-.minimize {
-  background: #ffbd2e;
-}
-
-.maximize {
-  background: #27c93f;
-}
-
-.window-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #999;
-  font-size: 13px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-.terminal-content {
-  flex: 1;
-  padding: 24px;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #eee;
-}
-
-.prompt {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 16px;
-}
-
-.command {
-  color: #eee;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.command-history .output {
-  color: #a0a0a0;
-  font-size: 15px;
-  line-height: 1.8;
-  margin-left: 4px;
-}
-
-.laptop {
-  position: relative;
-  width: 500px;
-  height: 320px;
-  margin: 0 auto;
-  transform-style: preserve-3d;
-  transform: rotateX(2deg) rotateY(-1deg) translateY(20px);
-  animation: float 8s ease-in-out infinite;
-}
-
-.laptop-screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #1a1a1a;
-  border-radius: 12px;
-  border: 2px solid #444;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(88, 156, 255, 0.3),
-    0 0 60px rgba(242, 87, 255, 0.2);
-  overflow: hidden;
-  padding: 4px;
-  animation: screenGlow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.laptop-screen::before {
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #333;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.laptop-keyboard {
-  position: absolute;
-  width: 130%;
-  height: 120px;
-  left: -15%;
-  bottom: -100px;
-  background: linear-gradient(to bottom, #808080, #999);
-  border-radius: 0 0 12px 12px;
-  transform: rotateX(60deg);
-  transform-origin: top;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  display: grid;
-  grid-template-columns: repeat(60, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 1px;
-  padding: 8px;
-}
-
-.laptop-keyboard::after {
-  content: '';
-  position: absolute;
-  width: 30%;
-  height: 4px;
-  bottom: 10px;
-  left: 35%;
-  background: #666;
-  border-radius: 2px;
-}
-
-.laptop-key {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-}
-
-.laptop-base {
-  position: absolute;
-  width: 130%;
-  height: 8px;
-  left: -15%;
-  bottom: -8px;
-  background: linear-gradient(to bottom, #999, #808080);
-  border-radius: 0 0 12px 12px;
-  transform: rotateX(-90deg);
-  transform-origin: top;
-}
-
-.laptop-base::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.2);
-  top: 0;
-}
-
-.laptop-trackpad {
-  position: absolute;
-  width: 40%;
-  height: 30px;
-  left: 30%;
-  bottom: 20px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.laptop-code {
-  padding: 20px;
-  font-family: 'Fira Code', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #e0e0e0;
-  opacity: 0.9;
-}
-
-.code-block {
-  animation: slideUp 20s linear infinite;
-}
-
-.code-line {
-  white-space: nowrap;
-  margin: 8px 0;
-}
-
-.indent {
-  padding-left: 20px;
-}
-
-.code-comment {
-  color: #888;
-  font-style: italic;
-}
-
-.code-keyword {
-  color: #f92672;
-}
-
-.code-variable {
-  color: #a6e22e;
-}
-
-.code-operator {
-  color: #d4d4d4;
-}
-
-.code-string {
-  color: #e6db74;
-}
-
-.code-bracket {
-  color: #d4d4d4;
-}
-
-.laptop-glow {
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
-  background: radial-gradient(
-    circle at center,
-    rgba(100, 255, 218, 0.15) 0%,
-    transparent 70%
-  );
-  filter: blur(30px);
-  animation: glow 6s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: rotateX(2deg) rotateY(-1deg) translateY(20px);
-  }
-  50% {
-    transform: rotateX(3deg) rotateY(1deg) translateY(10px);
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-}
-
-.laptop-keyboard::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(circle at center, rgba(0,0,0,0.2) 0.5px, transparent 1px);
-  background-size: 10px 10px;
-  background-position: -5px -5px;
-}
-
-:deep(.dark) .laptop-screen {
-  background: #000;
-  border-color: #333;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(100, 255, 218, 0.3),
-    0 0 80px rgba(100, 255, 218, 0.2);
-  animation: rgbGlowDark 8s linear infinite;
-}
-
-@keyframes screenGlow {
-  0% {
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(88, 156, 255, 0.2),
-      0 0 40px rgba(242, 87, 255, 0.1);
-  }
-  50% {
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.3),
-      0 0 80px rgba(88, 156, 255, 0.5),
-      0 0 120px rgba(242, 87, 255, 0.4);
-  }
-  100% {
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(88, 156, 255, 0.2),
-      0 0 40px rgba(242, 87, 255, 0.1);
-  }
-}
-
-@keyframes rgbGlowDark {
-  0% {
-    box-shadow: 
-      0 0 40px rgba(255, 0, 0, 0.6),
-      0 0 80px rgba(255, 0, 0, 0.3);
-  }
-  33% {
-    box-shadow: 
-      0 0 40px rgba(0, 255, 0, 0.6),
-      0 0 80px rgba(0, 255, 0, 0.3);
-  }
-  66% {
-    box-shadow: 
-      0 0 40px rgba(0, 0, 255, 0.6),
-      0 0 80px rgba(0, 0, 255, 0.3);
-  }
-  100% {
-    box-shadow: 
-      0 0 40px rgba(255, 0, 0, 0.6),
-      0 0 80px rgba(255, 0, 0, 0.3);
-  }
-}
-
-.laptop::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(
-    45deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.05) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .laptop,
-  .code-block,
-  .laptop-glow {
-    animation: none;
-  }
-}
-
-.macos-window {
-  background: #1e1e1e;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.window-header {
-  background: #323233;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  position: relative;
-}
-
-.window-controls {
-  display: flex;
-  gap: 8px;
-}
-
-.control {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.close {
-  background: #ff5f56;
-}
-
-.minimize {
-  background: #ffbd2e;
-}
-
-.maximize {
-  background: #27c93f;
-}
-
-.window-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #999;
-  font-size: 13px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-.terminal-content {
-  flex: 1;
-  padding: 16px;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #eee;
-}
-
-.prompt {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 12px;
-}
-
-.command {
-  color: #eee;
-  margin-bottom: 8px;
-}
-
-.node-prompt {
-  color: #7cbe4e;
-  margin: 8px 0;
-}
-
-.user {
-  color: #7cbe4e;
-}
-
-.separator, .symbol {
-  color: #999;
-}
-
-.directory {
-  color: #4a9eff;
-}
-
-.code-block {
-  margin-top: 12px;
-  animation: typing 4s steps(50, end);
-}
-
-@keyframes typing {
-  from { 
-    clip-path: inset(0 100% 0 0);
-  }
-  to { 
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-:deep(.dark) .macos-window {
-  background: #1a1a1a;
-}
-
-:deep(.dark) .window-header {
-  background: #2a2a2a;
-}
-
-.macos-window::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.1) 50%,
-    transparent
-  );
-}
-
-.macos-window {
-  position: relative;
-}
-
-.macos-window::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
-  border-radius: 8px;
-  pointer-events: none;
-}
-
-/* Add neon glow container */
-.laptop::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(88, 156, 255, 0.2) 0%,
-    rgba(242, 87, 255, 0.1) 40%,
-    transparent 70%
-  );
-  filter: blur(40px);
-  z-index: -1;
-  animation: pulseGlow 6s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-}
-
-/* Enhance dark mode glow */
-:deep(.dark) .laptop::before {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(100, 255, 218, 0.2) 0%,
-    rgba(100, 255, 218, 0.1) 40%,
-    transparent 70%
-  );
-}
-
-.tech-badge {
-  animation: techFloat 6s ease-in-out infinite;
-  will-change: transform;
-  position: relative;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tech-icon {
-  transition: transform 0.3s ease;
-}
-
-.tech-badge:hover .tech-icon {
-  transform: rotate(10deg) scale(1.2);
-}
-
-@keyframes techFloat {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-4px) rotate(-1deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(1deg);
-  }
-  75% {
-    transform: translateY(-2px) rotate(0deg);
-  }
-}
-
-/* Add subtle glow on hover */
-.tech-badge:hover {
-  box-shadow: 
-    0 8px 20px rgba(88, 156, 255, 0.15),
-    0 4px 12px rgba(242, 87, 255, 0.1);
-  transform: translateY(-4px) scale(1.05);
-}
-
-:deep(.dark) .tech-badge:hover {
-  box-shadow: 
-    0 8px 20px rgba(100, 255, 218, 0.15),
-    0 4px 12px rgba(100, 255, 218, 0.1);
-}
-
-/* Add subtle entrance animation */
-@keyframes techEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tech-badge {
-  animation: techEntrance 0.6s ease-out backwards,
-             techFloat 6s ease-in-out infinite 0.6s;
-}
-
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
+.animate-wave {
+  animation: wave 2.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
 }
 </style>
