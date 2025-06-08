@@ -21,6 +21,9 @@ let animationFrameId: number
 let isDragging = false
 let previousMousePosition = { x: 0, y: 0 }
 let previousTouchPosition = { x: 0, y: 0 }
+let rotationVelocity = 0
+let lastTime = 0
+let isSpinning = false
 
 const handleMouseDown = (event: MouseEvent) => {
   isDragging = true
@@ -29,6 +32,8 @@ const handleMouseDown = (event: MouseEvent) => {
     y: event.clientY
   }
   isUserInteracting.value = true
+  isSpinning = false
+  rotationVelocity = 0
   if (autoSpinTimeout.value) {
     clearTimeout(autoSpinTimeout.value)
     autoSpinTimeout.value = null
@@ -43,6 +48,8 @@ const handleTouchStart = (event: TouchEvent) => {
       y: event.touches[0].clientY
     }
     isUserInteracting.value = true
+    isSpinning = false
+    rotationVelocity = 0
     if (autoSpinTimeout.value) {
       clearTimeout(autoSpinTimeout.value)
       autoSpinTimeout.value = null
@@ -53,12 +60,18 @@ const handleTouchStart = (event: TouchEvent) => {
 const handleMouseMove = (event: MouseEvent) => {
   if (!isDragging || !towerGroup) return
 
+  const currentTime = performance.now()
+  const deltaTime = currentTime - lastTime
+  lastTime = currentTime
+
   const deltaMove = {
     x: event.clientX - previousMousePosition.x,
     y: event.clientY - previousMousePosition.y
   }
 
-  towerGroup.rotation.y += deltaMove.x * 0.01
+  // Calculate velocity based on movement speed
+  rotationVelocity = deltaMove.x * 0.01
+  towerGroup.rotation.y += rotationVelocity
 
   previousMousePosition = {
     x: event.clientX,
@@ -69,12 +82,18 @@ const handleMouseMove = (event: MouseEvent) => {
 const handleTouchMove = (event: TouchEvent) => {
   if (!isDragging || !towerGroup || event.touches.length !== 1) return
 
+  const currentTime = performance.now()
+  const deltaTime = currentTime - lastTime
+  lastTime = currentTime
+
   const deltaMove = {
     x: event.touches[0].clientX - previousTouchPosition.x,
     y: event.touches[0].clientY - previousTouchPosition.y
   }
 
-  towerGroup.rotation.y += deltaMove.x * 0.01
+  // Calculate velocity based on movement speed
+  rotationVelocity = deltaMove.x * 0.01
+  towerGroup.rotation.y += rotationVelocity
 
   previousTouchPosition = {
     x: event.touches[0].clientX,
@@ -85,17 +104,13 @@ const handleTouchMove = (event: TouchEvent) => {
 const handleMouseUp = () => {
   isDragging = false
   isUserInteracting.value = false
-  if (towerGroup) {
-    towerGroup.rotation.y += 0.005 // Force immediate rotation
-  }
+  isSpinning = true
 }
 
 const handleTouchEnd = () => {
   isDragging = false
   isUserInteracting.value = false
-  if (towerGroup) {
-    towerGroup.rotation.y += 0.005 // Force immediate rotation
-  }
+  isSpinning = true
 }
 
 const init = () => {
@@ -394,19 +409,26 @@ const init = () => {
 }
 
 const animate = () => {
-  try {
-    if (towerGroup && !isUserInteracting.value) {
+  animationFrameId = requestAnimationFrame(animate)
+
+  if (towerGroup) {
+    if (isSpinning) {
+      // Apply velocity and friction
+      towerGroup.rotation.y += rotationVelocity
+      rotationVelocity *= 0.95 // Friction factor
+
+      // Stop spinning when velocity is very low
+      if (Math.abs(rotationVelocity) < 0.0001) {
+        rotationVelocity = 0
+        isSpinning = false
+      }
+    } else if (!isUserInteracting.value) {
+      // Default auto-spin when not interacting
       towerGroup.rotation.y += 0.005
     }
-    
-    if (renderer && scene && camera) {
-      renderer.render(scene, camera)
-    }
-    
-    animationFrameId = requestAnimationFrame(animate)
-  } catch (error) {
-    console.error('Error in animation:', error)
   }
+
+  renderer.render(scene, camera)
 }
 
 const handleResize = () => {
