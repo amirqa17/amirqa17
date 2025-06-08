@@ -17,12 +17,12 @@ const handleGetInTouch = () => {
 </script>
 
 <template>
-  <section class="relative min-h-screen flex flex-col justify-center items-center bg-[#111015] overflow-hidden px-4 sm:px-6 lg:px-8">
+  <section class="relative min-h-[100dvh] flex flex-col justify-center items-center bg-[#111015] overflow-hidden px-4 sm:px-6 lg:px-8">
     <!-- Background gradient -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#111015] via-[#111015] to-[#1a1a1f] opacity-100"></div>
 
     <!-- Main content container -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen py-2 sm:py-4 md:py-6 lg:py-2">
+    <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center min-h-[100dvh] py-2 sm:py-4 md:py-6 lg:py-2">
       <!-- Headline -->
       <div class="text-center space-y-1 sm:space-y-2 lg:space-y-2">
         <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold tracking-tight leading-tight">
@@ -40,8 +40,10 @@ const handleGetInTouch = () => {
         
         <!-- 3D Model Container -->
         <div class="flex items-center justify-center w-full mt-4 sm:mt-6 lg:mt-6">
-          <div class="w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-[16rem] lg:h-[16rem] xl:w-[20rem] xl:h-[20rem] 2xl:w-[24rem] 2xl:h-[24rem]">
-            <TokyoTower3D />
+          <div class="w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-[16rem] lg:h-[16rem] xl:w-[20rem] xl:h-[20rem] 2xl:w-[24rem] 2xl:h-[24rem] min-h-[8rem] relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <TokyoTower3D />
+            </div>
           </div>
         </div>
 
