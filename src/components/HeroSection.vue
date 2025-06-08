@@ -22,30 +22,30 @@ const handleGetInTouch = () => {
     <div class="absolute inset-0 bg-gradient-to-b from-[#111015] via-[#111015] to-[#1a1a1f] opacity-100"></div>
 
     <!-- Main content container -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen py-4 sm:py-6 md:py-8 lg:py-10">
+    <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center min-h-screen py-4 sm:py-6 md:py-8 lg:py-4">
       <!-- Headline -->
-      <div class="text-center space-y-4 sm:space-y-6 lg:space-y-8">
-        <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight leading-tight">
-          <span class="block text-white mb-1 lg:mb-2">Hi <span class="inline-block animate-wave origin-[70%_70%]">👋</span></span>
+      <div class="text-center space-y-2 sm:space-y-4 lg:space-y-4">
+        <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold tracking-tight leading-tight">
+          <span class="block text-white mb-0.5 lg:mb-1">Hi <span class="inline-block animate-wave origin-[70%_70%]">👋</span></span>
           <span class="block text-white">
             <span>I'm </span>
             <span class="bg-gradient-to-r from-pink-400 via-pink-300 to-amber-300 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">Ibraimov Amir</span>
           </span>
-          <span class="block text-white mt-1 lg:mt-2">
+          <span class="block text-white mt-0.5 lg:mt-1">
             <span>a </span>
             <span class="bg-gradient-to-r from-pink-400 via-pink-300 to-amber-300 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">Frontend Engineer</span>
           </span>
-          <span class="block text-white mt-1 lg:mt-2">based in Tokyo</span>
+          <span class="block text-white mt-0.5 lg:mt-1">based in Tokyo</span>
         </h1>
         
         <!-- 3D Model Container -->
         <div class="flex items-center justify-center w-full">
-          <div class="w-40 h-40 xs:w-48 xs:h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem]">
+          <div class="w-40 h-40 xs:w-48 xs:h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[20rem] lg:h-[20rem] xl:w-[24rem] xl:h-[24rem] 2xl:w-[28rem] 2xl:h-[28rem]">
             <TokyoTower3D />
           </div>
         </div>
 
-        <p class="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl text-gray-300 max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 leading-relaxed">
+        <p class="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-xl xl:text-2xl text-gray-300 max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 leading-relaxed">
           With 5+ years of experience in frontend engineering,<span class="whitespace-nowrap"> I enjoy</span> creating responsive and user-friendly web applications. I'm passionate about clean code, performance optimization, and delivering great user experiences.
         </p>
 
@@ -53,31 +53,31 @@ const handleGetInTouch = () => {
         <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4 justify-center w-full max-w-md lg:max-w-xl mx-auto px-4">
           <button 
             @click="handleGetInTouch"
-            class="w-full sm:w-auto px-6 sm:px-8 lg:px-10 py-2 sm:py-3 lg:py-4 bg-gradient-to-r from-pink-500 to-orange-400 text-white rounded-lg text-base sm:text-lg lg:text-xl font-semibold shadow-lg hover:from-pink-600 hover:to-orange-500 transition-all duration-300 transform hover:scale-105"
+            class="w-full sm:w-auto px-6 sm:px-8 lg:px-8 xl:px-10 py-2 sm:py-3 lg:py-2.5 xl:py-3 bg-gradient-to-r from-pink-500 to-orange-400 text-white rounded-lg text-base sm:text-lg lg:text-lg xl:text-xl font-semibold shadow-lg hover:from-pink-600 hover:to-orange-500 transition-all duration-300 transform hover:scale-105"
           >
             Get in touch
           </button>
           <button 
             @click="showSkills = true"
-            class="w-full sm:w-auto px-6 sm:px-8 lg:px-10 py-2 sm:py-3 lg:py-4 bg-[#232127] text-pink-200 border border-pink-400/30 rounded-lg text-base sm:text-lg lg:text-xl font-semibold shadow hover:bg-[#2d2b32] transition-all duration-300 transform hover:scale-105"
+            class="w-full sm:w-auto px-6 sm:px-8 lg:px-8 xl:px-10 py-2 sm:py-3 lg:py-2.5 xl:py-3 bg-[#232127] text-pink-200 border border-pink-400/30 rounded-lg text-base sm:text-lg lg:text-lg xl:text-xl font-semibold shadow hover:bg-[#2d2b32] transition-all duration-300 transform hover:scale-105"
           >
             View technical skills
           </button>
         </div>
 
         <!-- Tech stack badges -->
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4 px-4">
-          <span class="px-3 sm:px-4 lg:px-5 py-1 lg:py-1.5 rounded-full bg-[#18171c] text-pink-200 border border-pink-400/20 text-xs sm:text-sm lg:text-base font-medium hover:border-pink-400/40 transition-colors">Vue.js</span>
-          <span class="px-3 sm:px-4 lg:px-5 py-1 lg:py-1.5 rounded-full bg-[#18171c] text-blue-200 border border-blue-400/20 text-xs sm:text-sm lg:text-base font-medium hover:border-blue-400/40 transition-colors">React</span>
-          <span class="px-3 sm:px-4 lg:px-5 py-1 lg:py-1.5 rounded-full bg-[#18171c] text-blue-300 border border-blue-400/20 text-xs sm:text-sm lg:text-base font-medium hover:border-blue-400/40 transition-colors">Next.js</span>
-          <span class="px-3 sm:px-4 lg:px-5 py-1 lg:py-1.5 rounded-full bg-[#18171c] text-orange-200 border border-orange-400/20 text-xs sm:text-sm lg:text-base font-medium hover:border-orange-400/40 transition-colors">Svelte</span>
-          <span class="px-3 sm:px-4 lg:px-5 py-1 lg:py-1.5 rounded-full bg-[#18171c] text-cyan-200 border border-cyan-400/20 text-xs sm:text-sm lg:text-base font-medium hover:border-cyan-400/40 transition-colors">Tailwind</span>
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-3 xl:gap-4 px-4">
+          <span class="px-3 sm:px-4 lg:px-4 xl:px-5 py-1 lg:py-1 xl:py-1.5 rounded-full bg-[#18171c] text-pink-200 border border-pink-400/20 text-xs sm:text-sm lg:text-sm xl:text-base font-medium hover:border-pink-400/40 transition-colors">Vue.js</span>
+          <span class="px-3 sm:px-4 lg:px-4 xl:px-5 py-1 lg:py-1 xl:py-1.5 rounded-full bg-[#18171c] text-blue-200 border border-blue-400/20 text-xs sm:text-sm lg:text-sm xl:text-base font-medium hover:border-blue-400/40 transition-colors">React</span>
+          <span class="px-3 sm:px-4 lg:px-4 xl:px-5 py-1 lg:py-1 xl:py-1.5 rounded-full bg-[#18171c] text-blue-300 border border-blue-400/20 text-xs sm:text-sm lg:text-sm xl:text-base font-medium hover:border-blue-400/40 transition-colors">Next.js</span>
+          <span class="px-3 sm:px-4 lg:px-4 xl:px-5 py-1 lg:py-1 xl:py-1.5 rounded-full bg-[#18171c] text-orange-200 border border-orange-400/20 text-xs sm:text-sm lg:text-sm xl:text-base font-medium hover:border-orange-400/40 transition-colors">Svelte</span>
+          <span class="px-3 sm:px-4 lg:px-4 xl:px-5 py-1 lg:py-1 xl:py-1.5 rounded-full bg-[#18171c] text-cyan-200 border border-cyan-400/20 text-xs sm:text-sm lg:text-sm xl:text-base font-medium hover:border-cyan-400/40 transition-colors">Tailwind</span>
         </div>
 
         <!-- Social Links -->
         <div 
           ref="socialLinksRef"
-          class="flex items-center justify-center gap-3 sm:gap-4 lg:gap-5 pt-1 lg:pt-2 transition-all duration-500"
+          class="flex items-center justify-center gap-3 sm:gap-4 lg:gap-4 xl:gap-5 pt-0.5 lg:pt-0.5 xl:pt-1 transition-all duration-500"
           :class="{
             'scale-110': highlightSocial,
             'bg-[#232127]/50 rounded-2xl p-4': highlightSocial
