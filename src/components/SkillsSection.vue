@@ -12,8 +12,8 @@
             <h2 class="text-3xl font-bold mb-2 text-white">Technical Skills</h2>
             <p class="text-gray-400">
               A comprehensive overview of my technical expertise
-            </p>
-          </div>
+      </p>
+    </div>
           <!-- Close button -->
           <button @click="$emit('close')" 
                   class="absolute top-4 right-4 p-2 text-gray-400 hover:text-white">
@@ -21,7 +21,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
-        </div>
+      </div>
 
         <!-- Skills Grid -->
         <div class="p-6">
@@ -34,10 +34,10 @@
                      class="flex items-center gap-2">
                   <div class="w-1.5 h-1.5 rounded-full" :class="getColorClasses(skill.color)"></div>
                   <span class="text-gray-300">{{ skill.name }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
+      </div>
+        </div>
+      </div>
         </div>
       </div>
     </div>
