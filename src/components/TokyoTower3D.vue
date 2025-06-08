@@ -84,18 +84,18 @@ const handleTouchMove = (event: TouchEvent) => {
 
 const handleMouseUp = () => {
   isDragging = false
-  // Start 5-second timer for auto-spin
-  autoSpinTimeout.value = window.setTimeout(() => {
-    isUserInteracting.value = false
-  }, 5000)
+  isUserInteracting.value = false
+  if (towerGroup) {
+    towerGroup.rotation.y += 0.005 // Force immediate rotation
+  }
 }
 
 const handleTouchEnd = () => {
   isDragging = false
-  // Start 5-second timer for auto-spin
-  autoSpinTimeout.value = window.setTimeout(() => {
-    isUserInteracting.value = false
-  }, 5000)
+  isUserInteracting.value = false
+  if (towerGroup) {
+    towerGroup.rotation.y += 0.005 // Force immediate rotation
+  }
 }
 
 const init = () => {
@@ -395,9 +395,6 @@ const init = () => {
 
 const animate = () => {
   try {
-    animationFrameId = requestAnimationFrame(animate)
-    
-    // Rotate the entire group if not being interacted with
     if (towerGroup && !isUserInteracting.value) {
       towerGroup.rotation.y += 0.005
     }
@@ -405,6 +402,8 @@ const animate = () => {
     if (renderer && scene && camera) {
       renderer.render(scene, camera)
     }
+    
+    animationFrameId = requestAnimationFrame(animate)
   } catch (error) {
     console.error('Error in animation:', error)
   }
