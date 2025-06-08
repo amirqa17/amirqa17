@@ -32,7 +32,7 @@ const handleGetInTouch = () => {
             <span class="bg-gradient-to-r from-pink-400 via-pink-300 to-amber-300 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">Ibraimov Amir</span>
           </span>
           <span class="block text-white mt-1 lg:mt-2">
-            <span>A </span>
+            <span>a </span>
             <span class="bg-gradient-to-r from-pink-400 via-pink-300 to-amber-300 bg-clip-text text-transparent bg-[length:200%_200%] animate-gradient">Frontend Engineer</span>
           </span>
           <span class="block text-white mt-1 lg:mt-2">based in Tokyo</span>
@@ -46,7 +46,7 @@ const handleGetInTouch = () => {
         </div>
 
         <p class="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl text-gray-300 max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 leading-relaxed">
-          With 5+ years of experience in frontend engineering, I enjoy creating responsive and user-friendly web applications. I'm passionate about clean code, performance optimization, and delivering great user experiences.
+          With 5+ years of experience in frontend engineering,<span class="whitespace-nowrap"> I enjoy</span> creating responsive and user-friendly web applications. I'm passionate about clean code, performance optimization, and delivering great user experiences.
         </p>
 
         <!-- CTA Buttons -->
