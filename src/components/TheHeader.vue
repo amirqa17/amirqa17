@@ -22,7 +22,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="fixed w-full bg-neutral-50/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-stone-200 dark:border-zinc-800 z-50">
+  <header class="fixed top-0 left-0 right-0 w-full bg-neutral-50/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-stone-200 dark:border-zinc-800 z-50 transform-gpu">
     <nav class="container mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-4">
