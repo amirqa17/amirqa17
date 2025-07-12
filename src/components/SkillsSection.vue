@@ -97,14 +97,24 @@ const skills: SkillCategory = {
   'Version Control': [
     { name: 'Git', color: 'orange' },
     { name: 'GitHub', color: 'purple' },
+    { name: 'GitLab', color: 'orange' },
     { name: 'Bitbucket', color: 'blue' },
   ],
-  'Optimization': [
-    { name: 'Responsive Design', color: 'green' },
-    { name: 'Lazy Loading', color: 'blue' },
+  'Performance & Architecture': [
+    { name: 'Web Performance Optimization', color: 'green' },
+    { name: 'Bundle Optimization', color: 'blue' },
     { name: 'Code Splitting', color: 'purple' },
-    { name: 'Asset Minification', color: 'orange' },
-    { name: 'Compression', color: 'cyan' },
+    { name: 'Micro-frontends', color: 'cyan' },
+    { name: 'Progressive Web Apps', color: 'orange' },
+    { name: 'Server-Side Rendering', color: 'green' },
+    { name: 'Static Site Generation', color: 'blue' },
+  ],
+  'Leadership & Collaboration': [
+    { name: 'Code Reviews', color: 'purple' },
+    { name: 'Technical Mentoring', color: 'green' },
+    { name: 'Architecture Planning', color: 'blue' },
+    { name: 'Team Coordination', color: 'cyan' },
+    { name: 'Best Practices Implementation', color: 'orange' },
   ],
   'Design and Tools': [
     { name: 'Figma', color: 'pink' },
